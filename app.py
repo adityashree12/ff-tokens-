@@ -1,15 +1,285 @@
-import zlib, base64, binascii
+#Credit:- Wotax exe!
+"""Before sharing the src with other please give credit to Wotax who made this"""
 
-_H = b'71632b5172416738744f4a58667039626235796c3159676533523768445849314e5148505074506a776a66494c496c304f55556b594977386668334250793073747935415a61454770664e6a514b675643756149412f342b5468447054734330467462426d2f43696f426b356e77787374446b54332f314375384b49306133434878626e764478396d776e4438636557334d3832586b466b6c54694f7165534764776472305258554d6c62666f4a5564566b76346e4e2f39744f4437584d56504f4336593633386c3870626142697448394d67454764556f51385a6c56374841346746413869494739714b4845354d6b4b67787158454146784d437254746848567275335865504a2f6c6b7a34347261757151753444704d6142754c717137584e4e4a6959364f306265756c4b4f584c4577622b7032684833664d4c4c496a2b343168795a7076494f7a4e73347565744936566c50335a764a2f692f37733454614971436e765a4c6679356f766b766b343943686a2f4470537662776144756d556a33646c486e437737666544424d382b7075377a7171654f3342704d43684542536b354b6274473561674f52486f764d305164456b58325067376d6a6c466245346e412b426b6e75786a354b4c674e6865366b504d72704a6558516a46422f49496e755a4c6a6539562f42646659394f4f4c5354634b5a6552637a4e6f557970736e4578594b746c494f2b6b446863516b6f495259584f514f7a7753355a76706a4e54306e7241756534417349304e554d367741424f3553674e32546774786f6266583643675a4763384a324f464778753873496b6d58706b646245645975416558504c6469484a704f6b417145516f314f3562534856566362453957635075437a716a5350322f33545131464f456e64506559587a2b44686a753351616e35746b4d6478482b4f6f706f656978413551594d355442654533515066737a7256554f6457795443344a756c613445566865476a42774e41364767423447476c775148484f72504e5651456a524561464d59725a416c314d316362544d6b4d694b5a54304d4a5a6c37595963624b59795739776347693978306c4246454269774e6f46725243634e7144614b32677a4f2f533173746a333371714474723379553261354a3335794b434a6775483334762f584b653948583573332f66355450536831775a4e47594563435976363931543954565a69452f69433443716a6f4475645537556c75765436693152494a7542434c645a7a643769737656376d377365526a3164614c57596f41777962367a617235574c4341484e646b6a346b5979726d353346384e747a615a7549615963773361304c616758316839626577566459343267553549312b61334d593264714d563730313058345a5a5a444b7169544b3758637a494236576c7961587a6e596a494b4e7267416e4b644263466c5161564643572f4367633037436b757548316e6759754a53386f4d626e43357349596f566f54716739576d4d6f7633615a594435556767584a6f3031676474347830485439314135376a57797a716b797261687a5278646a4f57423353306a4154762f30745a636b3539544170786d7939436757504c7a4d4c48645a4a396a555438435465586e716942475043554d6c4b68316157385568306f61456e6e4838674b4343476364317433684b4b475953587336766b677a7a71347a774e4a6a6e32516c6544706c493148616d66396c6e744350616f614f7173452b43746d796e5a3949716d6f786c684365327449484141486975567236583730494c3473585049663372355151484332615263647833574e524946494964655278336f335a35484565686d747a597637466b374636345032573943666f714e44595a45562b304847316b7876312f4d7a7675432f77785167444158656572544341784266702f5a69744c4e736437395569524c416431656b35535a544b5871706f4f4c36356d5833446d554d7830746a7674376c4a313447614e4d5242665641706253524c465a706730756b3149784a7831766b7137652b4c6a35796e6769746f476665433531424b36496861616d566935735361776472645971396b6e704f412f386d30313443546d53485579357955376949765552724a654b4b644c76515976446f416e682b6a6f424c7a38477932716335594e31484f3867726e615251593175745863494c4a6843304232614a706c5a5549632b69787238346b58596846645743755a327377363762593944396f68504c323234373246634944676e465a4a4d5a3539584e594734334654394a31637961494b3842456a37622f577237596e746c4251394f4a55316a48396c576d2f386947484353714544396e574b724b76554d462f6c2f4d57425043734876666b35654d647a466153426351736a32537865367139326253706c634c5a566a7852375057683448734764663672664774423078524245663456556b4e4f6e4950566e39686e6d4a5777744d7551614a31396e4a787455387378724955574f76336c6a4770466e7a4b55752f646644683563365531795a455a54726961695a32303643706e322b4f4249726a634c506151704b564679722f6d453268664a55447865617a7043574c4636716b444174456c523956744c4f446e4c376a662b46336532623352496d597364614a53556f6c77414351697879723035394371467a6f4443354c7647577845326a417a2f6842686d4669342b2f63687639776c5a347137587a6a42576e35316d31726d78473233594f50676373494c6f6d542f5441493255304e2f6b7650336f384938664368735136704978503849434c524179666c5450756b6d2f713237704c4d34496a4b6d776e384b3862743232645734616e53462b566f344b3843334f4f644f6639513774626f577a3179547455594f6167397072632b34744f514e32644a525574657a2f677746646735334a52434859663269426451626d715177533743513034535049786270524a4b5a423236716c63346a474a437456335971435073632f6b776a4d7a316b48326c6235592b6379432b4d35565a435936335279424c624f2b3341716c354d713163614b6c6b5a49536944462f6978753232385a326f7863766831355962795a7734574d774f4a394f75414f624d486b7731575a4e716a4d503877737352634a306149457474494c6f5444646d544769736967326652714b585a326f70687a4b496d7942696f43354e497061774b786247396f672b3030504f39444577316851726a56637575646d687458597050702f6a724e68724f3631566e5230414b524844497a6c50423563394b4e3356786670323253437376412f487a4e7a4e6a5566525476524a325254566331716135744a534157784233736a67425a775078346833463634486e514e6a356f5465716a364b61394764652b7858567039666539704a4239433366595558744a7653375a6a6538306669616a66434d77484a326e3777797149613270653963663051323035726e4c794f6472684f4f52504347534b45363047564236536875537570486448477a4a2b742b53423862432f74645a71476f4d6b47786e72317031665065717538464c6f78455a7a4f4657386d66366a7a5139554b5a7979527277707065394b596e617979656b5442474679374c6b4562304f386d4b334746564d6a3546726e58696e4e4f78586238366f31795a754a3654693878426b686b46676863666f754f367142322f6a70374d657454675873534d2f446a794e70395256567962644351655670574c48674a744154797158526c31366a5432727969792f74302f6e756c3057627a4f38346a696a434a4e5578675851422b37425858647473344333543455523364765732386c346b333964495338446e3431517939437a6a5a2f5263536e4177427131374d337232537770554a7230614b5a64595450565a69492f477533752f4d42546f4734796b54563753352f6b52797336587155346f323550494838636e786534497047783946457350526e2f524763754647436c474e386d7655594f692f4278473439312b364b734d694b474938627a3652374b595634456e776a56757a4371533169374276726f62343177576c75536a556d4a79784548554d484d70335a7442764c4853314a524a2f5a396863456a324848734771686576556c6948766e696576726c763050534e6f68657957502f5756574c787752515031565273657351574d45344171734865374f4b7a75615a44546d5065753356706748534552645469712f63636372312b5a315667485a64'
-_K = 13
 
-_R = binascii.unhexlify(_H)
-_B = _R[::-1]
-_X = base64.b64decode(_B)
+from flask import Flask, request, jsonify
+import asyncio
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+from google.protobuf.json_format import MessageToJson
+import binascii
+import aiohttp
+import requests
+import json
+import like_pb2
+import like_count_pb2
+import uid_generator_pb2
+from google.protobuf.message import DecodeError
 
-_D = bytearray(_X)
-for i in range(len(_D)):
-    _D[i] ^= _K
+app = Flask(__name__)
 
-_C = zlib.decompress(_D)
-exec(_C.decode('utf-8'))
+def load_tokens(server_name):
+    REPO = "adityashree12/ff-tokens-"
+    BASE_URL = f"https://raw.githubusercontent.com/{REPO}/main/"
+    
+    try:
+        if server_name == "IND":
+            url = BASE_URL + "token_ind.json"
+        elif server_name in {"BR", "NA", "US", "SAC"}:
+            url = BASE_URL + "token_br.json"
+        else:
+            url = BASE_URL + "token_ag.json"
+            
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            app.logger.error(f"Failed to fetch tokens from {url}: {response.status_code}")
+            return None
+    except Exception as e:
+        app.logger.error(f"Error loading tokens for server {server_name}: {e}")
+        return None
+
+def encrypt_message(plaintext):
+    try:
+        key = b'Yg&tc%DEuh6%Zc^8'
+        iv = b'6oyZDr22E3ychjM%'
+        cipher = AES.new(key, AES.MODE_CBC, iv)
+        padded_message = pad(plaintext, AES.block_size)
+        encrypted_message = cipher.encrypt(padded_message)
+        return binascii.hexlify(encrypted_message).decode('utf-8')
+    except Exception as e:
+        app.logger.error(f"Error encrypting message: {e}")
+        return None
+
+def create_protobuf_message(user_id, region):
+    try:
+        message = like_pb2.like()
+        message.uid = int(user_id)
+        message.region = region
+        return message.SerializeToString()
+    except Exception as e:
+        app.logger.error(f"Error creating protobuf message: {e}")
+        return None
+
+async def send_request(encrypted_uid, token, url):
+    try:
+        edata = bytes.fromhex(encrypted_uid)
+        headers = {
+            'User-Agent': "Dalvik/2.1.0 (Linux; U; Android 12; ASUS_Z01QD Build/PI)",
+            'Connection': "Keep-Alive",
+            'Accept-Encoding': "gzip",
+            'Authorization': f"Bearer {token}",
+            'Content-Type': "application/x-www-form-urlencoded",
+            'Expect': "100-continue",
+            'X-Unity-Version': "2022.3.47f1",
+            'X-GA': "v1 1",
+            'ReleaseVersion': "OB52"
+        }
+        async with aiohttp.ClientSession() as session:
+            async with session.post(url, data=edata, headers=headers) as response:
+                if response.status != 200:
+                    app.logger.error(f"Request failed with status code: {response.status}")
+                    return response.status
+                return await response.text()
+    except Exception as e:
+        app.logger.error(f"Exception in send_request: {e}")
+        return None
+
+async def send_multiple_requests(uid, server_name):
+    try:
+        region = server_name
+        protobuf_message = create_protobuf_message(uid, region)
+        if protobuf_message is None:
+            app.logger.error("Failed to create protobuf message.")
+            return None
+        encrypted_uid = encrypt_message(protobuf_message)
+        if encrypted_uid is None:
+            app.logger.error("Encryption failed.")
+            return None
+        if server_name == "IND":
+            url = "https://client.ind.freefiremobile.com/LikeProfile"
+        elif server_name in {"BR", "US"}:
+            url = "https://client.us.freefiremobile.com/LikeProfile"
+        else:
+            url = "https://clientbp.ggblueshark.com/LikeProfile"
+        app.logger.info(f"Sending LikeProfile requests to {url} for region {server_name}")
+        tasks = []
+        tokens = load_tokens(server_name)
+        if tokens is None:
+            app.logger.error("Failed to load tokens.")
+            return None
+        for i in range(100):
+            token = tokens[i % len(tokens)]["token"]
+            tasks.append(send_request(encrypted_uid, token, url))
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        return results
+    except Exception as e:
+        app.logger.error(f"Exception in send_multiple_requests: {e}")
+        return None
+
+
+def create_protobuf(uid):
+    try:
+        message = uid_generator_pb2.uid_generator()
+        message.saturn_ = int(uid)
+        message.garena = 1
+        return message.SerializeToString()
+    except Exception as e:
+        app.logger.error(f"Error creating uid protobuf: {e}")
+        return None
+
+def enc(uid):
+    protobuf_data = create_protobuf(uid)
+    if protobuf_data is None:
+        return None
+    encrypted_uid = encrypt_message(protobuf_data)
+    return encrypted_uid
+
+def make_request(encrypt, server_name, token):
+    try:
+        if server_name == "IND":
+            url = "https://client.ind.freefiremobile.com/GetPlayerPersonalShow"
+        elif server_name in {"BR", "US"}:
+            url = "https://client.us.freefiremobile.com/GetPlayerPersonalShow"
+        else:
+            url = "https://clientbp.ggblueshark.com/GetPlayerPersonalShow"
+        app.logger.info(f"Using URL {url} for region {server_name}")
+        edata = bytes.fromhex(encrypt)
+        headers = {
+            'User-Agent': "Dalvik/2.1.0 (Linux; U; Android 12; ASUS_Z01QD Build/PI)",
+            'Connection': "Keep-Alive",
+            'Accept-Encoding': "gzip",
+            'Authorization': f"Bearer {token}",
+            'Content-Type': "application/x-www-form-urlencoded",
+            'Expect': "100-continue",
+            'X-Unity-Version': "2022.3.47f1",
+            'X-GA': "v1 1",
+            'ReleaseVersion': "OB52"
+        }
+        response = requests.post(url, data=edata, headers=headers, verify=False)
+        hex_data = response.content.hex()
+        binary = bytes.fromhex(hex_data)
+        decode = decode_protobuf(binary)
+        if decode is None:
+            app.logger.error("Protobuf decoding returned None.")
+        return decode
+    except Exception as e:
+        app.logger.error(f"Error in make_request: {e}")
+        return None
+
+def decode_protobuf(binary):
+    try:
+        items = like_count_pb2.Info()
+        items.ParseFromString(binary)
+        return items
+    except DecodeError as e:
+        app.logger.error(f"Error decoding Protobuf data: {e}")
+        return None
+    except Exception as e:
+        app.logger.error(f"Unexpected error during protobuf decoding: {e}")
+        return None
+
+def fetch_player_info(uid):
+    try:
+        url = f"https://wotaxxdev-api.vercel.app/info?uid={uid}"
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            player_data = data.get("playerData", {})
+            return {
+                "Level": player_data.get("level", "NA"),
+                "Region": player_data.get("region", "NA"),
+                "ReleaseVersion": player_data.get("releaseVersion", "NA")
+            }
+        else:
+            app.logger.error(f"Player info API failed with status code: {response.status_code}")
+            return {"Level": "NA", "Region": "NA", "ReleaseVersion": "NA"}
+    except Exception as e:
+        app.logger.error(f"Error fetching player info from API: {e}")
+        return {"Level": "NA", "Region": "NA", "ReleaseVersion": "NA"}
+
+@app.route('/like', methods=['GET'])
+def handle_requests():
+    uid = request.args.get("uid")
+    server_name = request.args.get("server_name", "").upper()
+    if not uid:
+        return jsonify({"error": "UID is required"}), 400
+
+    try:
+        def process_request():
+            player_info = fetch_player_info(uid)
+            region = player_info["Region"]
+            level = player_info["Level"]
+            release_version = player_info["ReleaseVersion"]
+
+            if region != "NA":
+                server_name_used = region
+                app.logger.info(f"Using API-detected region: {server_name_used}")
+            else:
+                server_name_used = "BD"
+                app.logger.info(f"API region unavailable, defaulting to BD server")
+
+            if server_name:
+                server_name_used = server_name
+                app.logger.info(f"Overriding with provided server_name: {server_name_used}")
+
+            tokens = load_tokens(server_name_used)
+            if tokens is None:
+                raise Exception("Failed to load tokens.")
+            token = tokens[0]['token']
+            encrypted_uid = enc(uid)
+            if encrypted_uid is None:
+                raise Exception("Encryption of UID failed.")
+
+            before = make_request(encrypted_uid, server_name_used, token)
+            if before is None:
+                raise Exception("Failed to retrieve initial player info.")
+            try:
+                jsone = MessageToJson(before)
+            except Exception as e:
+                raise Exception(f"Error converting 'before' protobuf to JSON: {e}")
+            data_before = json.loads(jsone)
+            before_like = data_before.get('AccountInfo', {}).get('Likes', 0)
+            try:
+                before_like = int(before_like)
+            except Exception:
+                before_like = 0
+            app.logger.info(f"Likes before command: {before_like}")
+
+            asyncio.run(send_multiple_requests(uid, server_name_used))
+
+            after = make_request(encrypted_uid, server_name_used, token)
+            if after is None:
+                raise Exception("Failed to retrieve player info after like requests.")
+            try:
+                jsone_after = MessageToJson(after)
+            except Exception as e:
+                raise Exception(f"Error converting 'after' protobuf to JSON: {e}")
+            data_after = json.loads(jsone_after)
+            after_like = int(data_after.get('AccountInfo', {}).get('Likes', 0))
+            player_uid = int(data_after.get('AccountInfo', {}).get('UID', 0))
+            player_name = str(data_after.get('AccountInfo', {}).get('PlayerNickname', ''))
+            like_given = after_like - before_like
+            status = 1 if like_given != 0 else 2
+            result = {
+                "LikesGivenByAPI": like_given,
+                "LikesafterCommand": after_like,
+                "LikesbeforeCommand": before_like,
+                "PlayerNickname": player_name,
+                "Region": region,
+                "Level": level,
+                "UID": player_uid,
+                "ReleaseVersion": release_version,
+                "status": status
+            }
+            return result
+
+        result = process_request()
+        return jsonify(result)
+    except Exception as e:
+        app.logger.error(f"Error processing request: {e}")
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True, use_reloader=False)
