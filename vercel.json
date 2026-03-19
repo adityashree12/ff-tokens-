@@ -2,15 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "./app.py",
-      "use": "@vercel/python",
-      "config": {"runtime": "python3.8"}
+      "src": "index.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "index.py"
     }
   ]
 }
+```
+
+**Step 3 — Wait 2 minutes then try:**
+```
+https://ff-tokens.vercel.app/like?uid=1202213474&server_name=IND
